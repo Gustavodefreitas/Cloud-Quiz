@@ -4,11 +4,11 @@ class PerfilPage extends StatefulWidget{
 
   PerfilPage({Key? key}): super(key: key);
   @override
-  _PerfilPageSate createState() => _PerfilPageSate();
+  _PerfilPageState createState() => _PerfilPageState();
 
 }
 
-  class _PerfilPageSate extends State<PerfilPage>{
+  class _PerfilPageState extends State<PerfilPage>{
     @override
     Widget build(BuildContext context){
       return Scaffold(

@@ -4,11 +4,11 @@ class InicialPage extends StatefulWidget{
 
   InicialPage({Key? key}): super(key: key);
   @override
-  _InicialPageSate createState() => _InicialPageSate();
+  _InicialPageState createState() => _InicialPageState();
 
 }
 
-  class _InicialPageSate extends State<InicialPage>{
+  class _InicialPageState extends State<InicialPage>{
     @override
     Widget build(BuildContext context){
       return Scaffold(
