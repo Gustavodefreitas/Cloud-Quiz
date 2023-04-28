@@ -1,4 +1,4 @@
-import 'package:appmobile/pages/Login_page.dart';
+/*import 'package:appmobile/pages/Login_page.dart';
 import 'package:appmobile/pages/home_page.dart';
 import 'package:appmobile/services/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -31,4 +31,4 @@ class _AuthCheckState extends State<AuthCheck>{
         )
       );
   }
-} 
+} */
