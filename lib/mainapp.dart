@@ -1,3 +1,4 @@
+import 'package:appmobile/pages/Login_page.dart';
 import 'package:appmobile/pages/home_page.dart';
 import 'package:appmobile/widgets/auth_check.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget{
         
         primarySwatch: Colors.purple,
       ),
-      home:HomePage(),
+      home:LoginScreen(),
     );
   }
 }

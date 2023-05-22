@@ -13,7 +13,7 @@ class InicialPage extends StatefulWidget{
     Widget build(BuildContext context){
       return Scaffold(
         appBar: AppBar(
-          title: Text('menu'),
+          title: Text('home'),
 
         ),
       );
