@@ -1,4 +1,4 @@
-/*import 'package:appmobile/pages/Login_page.dart';
+import 'package:appmobile/pages/Login_page.dart';
 import 'package:appmobile/pages/home_page.dart';
 import 'package:appmobile/services/auth_service.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class _AuthCheckState extends State<AuthCheck>{
     if(auth.isLoading) 
       return Loading();
     else if(auth.usuario == null) 
-      return LoginPage();
+      return LoginScreen();
     else
       return HomePage();
     }
@@ -31,4 +31,4 @@ class _AuthCheckState extends State<AuthCheck>{
         )
       );
   }
-}*/
+}
