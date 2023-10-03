@@ -12,7 +12,9 @@ class UserService extends ChangeNotifier{
         'userId':id,
         'nome': nome,
         'email': email,
-        'telefone':telefone
+        'telefone':telefone,
+        'points':0,
+        'quiz':[]
       });
       print('Usuário cadastrado com sucesso.');
     } catch (e) {
