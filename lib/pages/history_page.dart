@@ -36,8 +36,9 @@ class _HistoryPageState extends State<HistoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white, // Cor de fundo personalizada
         title: Text('Histórico de Quizzes'),
-
+        centerTitle: true,
       ),
       body: Container(
         margin: EdgeInsets.all(2),
