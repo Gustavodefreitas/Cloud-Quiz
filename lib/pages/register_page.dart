@@ -1,21 +1,23 @@
-import 'package:appmobile/firebase_config_b.dart';
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 import '../services/auth_service.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  RegisterScreen({Key? key}) : super(key: key);
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   final formKey = GlobalKey<FormState>();
   final email = TextEditingController();
   final senha = TextEditingController();
-
+  final nome = TextEditingController();
+  final telefone = TextEditingController();
   bool isLogin = true;
   late String titulo;
   late String actionButton;
@@ -23,36 +25,38 @@ class _LoginScreenState extends State<LoginScreen> {
   bool loading = false;
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
     setFormAction(true);
-   
-
   }
 
   setFormAction(bool acao){
     setState(() {
-        titulo = 'Bem vindo';
-        actionButton = 'login';
-        toggleButton = 'Ainda não tem conta? Cadastre-se agora';
+      isLogin = acao;
+      titulo = 'Crie sua conta';
+      actionButton = 'Cadastrar';
+      toggleButton = 'Voltar ao login.';
     });
   }
- getSnackBar(text,color){
+
+
+  getSnackBar(text,color){
     return SnackBar(
       content: Text(text),
       backgroundColor: color == "success"?Colors.green:color == "erro"?Color(0xFFff0c44):Colors.blue,
       behavior: SnackBarBehavior.floating, // Define o comportamento como flutuante
       margin: EdgeInsets.all(56.0)); // Define o espaço em relação à parte inferior
   }
-  login() async {
+
+  registrar() async {
     setState(() => loading = true);
     try {
-      await context.read<AuthService>().login(email.text, senha.text, (resp) => {
+      await context.read<AuthService>().registrar(email.text, senha.text,nome.text,telefone.text,(resp) => {
         if(resp){
-          Navigator.pushNamed(context, '/home'),
-          ScaffoldMessenger.of(context).showSnackBar(getSnackBar("Login realizado com sucesso!","success"))
+          Navigator.pushNamed(context, '/login'),
+          ScaffoldMessenger.of(context).showSnackBar(getSnackBar("Usuário cadastrado com sucesso!","success"))
         } else {
-           ScaffoldMessenger.of(context).showSnackBar(getSnackBar("Falha ao realizar login, tente novamente mais tarde!","erro"))
+           ScaffoldMessenger.of(context).showSnackBar(getSnackBar("Falha ao realizar cadastro, tente novamente mais tarde!","erro"))
         }
       });
     } on AuthException catch (e) {
@@ -61,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
           .showSnackBar(SnackBar(content: Text(e.message)));
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +89,37 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: EdgeInsets.all(24),
                   child: TextFormField(
+                    controller: nome,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Nome',
+                    ),
+                    validator: (value){
+                      if(value!.isEmpty){
+                        return 'Informe o nome corretamente!';
+                      }
+                      return null;
+                    },
+                  ),
+                ),Padding(
+                  padding: EdgeInsets.all(24),
+                  child: TextFormField(
+                    controller: telefone,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Telefone',
+                    ),
+                    validator: (value){
+                      if(value!.isEmpty){
+                        return 'Informe o telefone corretamente!';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                 Padding(
+                  padding: EdgeInsets.all(24),
+                  child: TextFormField(
                     controller: email,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -97,7 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
-                ),Padding(
+                ),
+                Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
                   child: TextFormField(
@@ -122,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                          login();
+                          registrar();
                       }
                     },
                     child: Row(
@@ -154,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () => Navigator.pushNamed(context, '/register'),
+                  onPressed: () => Navigator.pushNamed(context, '/login') ,
                   child: Text(toggleButton),
                 ),
               ],

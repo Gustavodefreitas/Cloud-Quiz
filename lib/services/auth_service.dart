@@ -1,3 +1,5 @@
+import 'package:appmobile/firebase_config_b.dart';
+import 'package:appmobile/services/user_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -28,9 +30,22 @@ _getUser() {
     notifyListeners();
   }
 
-  registrar(String email, String senha) async {
+  getUsuarioLogado() async {
+    final uid = _auth.currentUser?.uid;
+    final user = await UserService().buscarUsuario(uid);
+    return user;
+  }
+
+  registrar(String email, String senha,String nome,String telefone,Function callback) async {
     try {
-      await _auth.createUserWithEmailAndPassword(email: email, password: senha);
+      await _auth.createUserWithEmailAndPassword(email: email, password: senha)
+      .then((resp) => {
+      callback(true),
+      UserService().cadastrarUsuario(resp.user?.uid,nome,email,telefone,senha)
+
+      }).catchError((err) => {
+        callback(false)
+      });
       _getUser();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -41,9 +56,16 @@ _getUser() {
     }
   }
 
-  login(String email, String senha) async {
+  login(String email, String senha,Function callback) async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email, password: senha);
+      
+      await _auth.signInWithEmailAndPassword(email: email, password: senha)
+      .then((resp) => {
+        callback(true)
+         
+      }).catchError((err) => {
+        callback(false)
+      });
       _getUser();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
