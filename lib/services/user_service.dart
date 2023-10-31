@@ -2,6 +2,8 @@ import 'package:appmobile/services/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import '../firebase_config_b.dart';
+
 class UserService extends ChangeNotifier{
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -27,6 +29,22 @@ class UserService extends ChangeNotifier{
 
           final user = await AuthService().getUsuarioLogado();
           final userFinal = await buscarUsuarioId(user['userId']);
+          final data = await FirebaseConfigB.firestoreB.collection('answersUsers').add(({
+              'answers':  answers.map((question) {
+              return {
+                'question': question['question'],
+                'answers': question['answer'].map((a){
+                  return  {'text': a['text'], 'ansId': a['ansId'], 'value': a['value']};
+                }).toList()
+              };
+            }).toList(),
+              'quiz': quiz,
+              'date':DateTime.now().toString(),
+              'user': {
+                'nome':user['nome'],
+                'email':user['email'],
+              }
+          }));
 
             Map<String, dynamic> quizData = {
               'answers':  answers.map((question) {
@@ -38,6 +56,7 @@ class UserService extends ChangeNotifier{
               };
             }).toList(),
               'quiz': quiz,
+              'date':DateTime.now().toString()
             };
            
             

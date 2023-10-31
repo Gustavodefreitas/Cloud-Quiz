@@ -68,13 +68,7 @@ class _DashboardState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-        icon: Icon(Icons.arrow_back), // Ícone de voltar
-        onPressed: () {
-          // Ação a ser executada quando o ícone de voltar for pressionado
-          Navigator.of(context).pop(); // Para voltar à tela anterior
-        },
-  ),
+        automaticallyImplyLeading: false,
         title: Text('Dashboard'),
       ),
       body: Padding(

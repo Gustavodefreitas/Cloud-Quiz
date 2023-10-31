@@ -23,6 +23,7 @@ class _InicialPageState extends State<InicialPage> {
   static var time = '';
   static var approvalPercentage = '';
   static var questionsAmount = '';
+ 
   @override
   void initState() {
     super.initState();
@@ -56,9 +57,25 @@ class _InicialPageState extends State<InicialPage> {
   int approve= 0;
   @override
   Widget build(BuildContext context) {
+    final dynamic args = ModalRoute.of(context)?.settings.arguments ?? {};
+
+    // Recupere os parâmetros
+    final String results = args['results'] ?? '';
+    final dynamic quiz = args['quiz'] ?? '';
+    final dynamic quizDisabledArg = args['quizDisabled'] ?? '';
+
+    if(results == 'true'){
+      showQuiz = false;
+      showQuiz2 = true;
+      quizSelected = quiz;
+      quizDisabled = quizDisabledArg;
+      isDisabled = true;
+      
+    }
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('Quizzes'),
+        automaticallyImplyLeading: false,
       ),
       body: Column(
         children: [
@@ -731,7 +748,7 @@ class RedCardWithInfo extends StatelessWidget {
               ),
             ),
             SizedBox(height: 8.0), // Espaçamento vertical maior
-                       Center(
+            Center(
                 child: ElevatedButton(
                   onPressed: () {
                     callback();

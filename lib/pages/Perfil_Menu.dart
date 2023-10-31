@@ -38,6 +38,8 @@ class _PerfilMenuPageState extends State<PerfilMenuPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Perfil'),
+          automaticallyImplyLeading: false,
+
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -137,6 +139,39 @@ class _PerfilMenuPageState extends State<PerfilMenuPage> {
             ),
             
               FractionallySizedBox(
+              widthFactor: 1.0, // 50% de largura
+              child: Container(
+                height: 50,
+                 decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.grey, // Cor da borda
+                        width: 1.0, // Largura da borda
+                      ),
+                    ),),
+                child: 
+                GestureDetector(
+                  onTap: () => {
+                     Navigator.pushNamed(context, '/history'),
+
+                  },
+                  child: Row(children: [
+                  
+                  Container(
+                    margin: EdgeInsets.only(left: 16.0),
+                    child:Icon(Icons.history, size: 24)),
+                  Container(
+                    margin: EdgeInsets.only(left: 16.0),
+                    child: Text(
+                      'Histórico',
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  )
+                ]),),
+              ),
+            ),FractionallySizedBox(
               widthFactor: 1.0, // 50% de largura
               child: Container(
                 height: 50,

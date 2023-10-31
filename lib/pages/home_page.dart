@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'Inicial_page.dart';
 import 'Perfil_Page.dart';
+import 'history_page.dart';
 
 class HomePage extends StatefulWidget{
 
@@ -37,9 +38,10 @@ class _HomePageState extends State<HomePage>{
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
+    return Scaffold(      
       body: PageView(
         controller: pc,
+        allowImplicitScrolling: true,
         children: [
           DashboardPage(),
           InicialPage(),
@@ -49,10 +51,11 @@ class _HomePageState extends State<HomePage>{
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: paginaAtual,
+          type: BottomNavigationBarType.fixed, // Define o tipo como fixed
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.dashboard ,color: paginaAtual == 0? Colors.red:Colors.black),label: 'Dashboard'),
-          BottomNavigationBarItem(icon: Icon(Icons.home,color: paginaAtual == 1? Colors.red:Colors.black),label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.list,color: paginaAtual == 2? Colors.red:Colors.black), label: 'perfil')
+          BottomNavigationBarItem(icon: Icon(Icons.home,color: paginaAtual == 1? Colors.red:Colors.black),label: 'Quizzes'),
+          BottomNavigationBarItem(icon: Icon(Icons.list,color: paginaAtual == 2? Colors.red:Colors.black), label: 'Perfil')
         ],
         onTap: (pagina){
           pc.animateToPage(pagina,
