@@ -52,7 +52,6 @@ class _PerfilPageState extends State<PerfilPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Editar Perfil'),
-        automaticallyImplyLeading: false,
       ),
       body: Padding(
           padding: EdgeInsets.symmetric(vertical: 0),

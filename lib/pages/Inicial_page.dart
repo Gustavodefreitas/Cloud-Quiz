@@ -116,7 +116,8 @@ class _InicialPageState extends State<InicialPage> {
                   });
                   }
                 
-                  return GestureDetector(
+                  if(!disabled){
+                    return GestureDetector(
                       onTap: () {
                         setState(() {
                           isDisabled = disabled;
@@ -167,6 +168,10 @@ class _InicialPageState extends State<InicialPage> {
                           questions: quiz['questionsAmount'],
                         ),
                       ));
+                  } else {
+                    return Container();
+                  }
+                  
                 }).toList(),
               ),
             ),
@@ -265,7 +270,7 @@ class _InicialPageState extends State<InicialPage> {
                               showQuiz = false;
                               showQuiz2 = false;
                               isDisabled = false;
-                               Navigator.pushNamed(context, '/home');
+                               Navigator.pushNamed(context, '/history');
                             })
                           }
                       })
@@ -378,7 +383,7 @@ class _QuizQuestionState extends State<QuizQuestion> {
   final dynamic returnQuiz;
   final dynamic isDisabled;
   final dynamic quizDisabled;
-  
+  bool disabledButton = false;
   _QuizQuestionState(this.quiz, this.callback,this.returnQuiz,this.isDisabled,this.quizDisabled);
 
   dynamic user = {};
@@ -521,7 +526,9 @@ class _QuizQuestionState extends State<QuizQuestion> {
                   if(isDisabled){
                       callback(true);
                   } else {
-                  context.read<UserService>().salvarQuiz(
+                    if(!disabledButton){
+                       disabledButton = true;
+                      context.read<UserService>().salvarQuiz(
                       answers,
                       quiz,
                       (resp) => {
@@ -539,7 +546,10 @@ class _QuizQuestionState extends State<QuizQuestion> {
                                         "Falha ao finalizar Quiz!", "error"))
                               }
                           });
-                  }
+                    }
+                    }
+                  
+                  
                 } else {
                   if (selectedOption != []) {
                     var opts = [];

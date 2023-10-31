@@ -37,7 +37,6 @@ class _HistoryPageState extends State<HistoryPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Histórico de Quizzes'),
-        automaticallyImplyLeading: false,
 
       ),
       body: Container(
