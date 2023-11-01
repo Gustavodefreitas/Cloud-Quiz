@@ -53,9 +53,9 @@ class _HomePageState extends State<HomePage>{
         currentIndex: paginaAtual,
           type: BottomNavigationBarType.fixed, // Define o tipo como fixed
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.dashboard ,color: paginaAtual == 0? Colors.red:Colors.black),label: 'Dashboard'),
-          BottomNavigationBarItem(icon: Icon(Icons.home,color: paginaAtual == 1? Colors.red:Colors.black),label: 'Quizzes'),
-          BottomNavigationBarItem(icon: Icon(Icons.list,color: paginaAtual == 2? Colors.red:Colors.black), label: 'Perfil')
+          BottomNavigationBarItem(icon: Icon(Icons.dashboard ,color: paginaAtual == 0? Color(0xFF149cb0):Colors.black),label: 'Dashboard'),
+          BottomNavigationBarItem(icon: Icon(Icons.home,color: paginaAtual == 1? Color(0xFF149cb0):Colors.black),label: 'Quizzes'),
+          BottomNavigationBarItem(icon: Icon(Icons.list,color: paginaAtual == 2? Color(0xFF149cb0):Colors.black), label: 'Perfil')
         ],
         onTap: (pagina){
           pc.animateToPage(pagina,

@@ -45,7 +45,7 @@ class _InicialPageState extends State<InicialPage> {
   getSnackBar(text,color){
     return SnackBar(
       content: Text(text),
-      backgroundColor: color == "success"?Colors.green:color == "erro"?Color(0xFFff0c44):Colors.blue,
+      backgroundColor: color == "success"?Colors.green:color == "erro"?Color(0xFF149cb0):Colors.blue,
       behavior: SnackBarBehavior.floating, // Define o comportamento como flutuante
       margin: EdgeInsets.all(56.0)); // Define o espaço em relação à parte inferior
   }
@@ -72,38 +72,33 @@ class _InicialPageState extends State<InicialPage> {
       isDisabled = true;
       
     }
+    bool disabled;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quizzes'),
+         backgroundColor: Colors.white,
+        title: Text('Quizzes', style: TextStyle(color: Colors.black)),
+        centerTitle: true,
         automaticallyImplyLeading: false,
       ),
       body: Column(
         children: [
           Visibility(
-              visible: !showQuiz && !showQuiz2,
-              child: Title(
-                title: "Questionários",
-                color: Colors.black,
-                child: Text(
-                  "SELECIONE O QUIZ:",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFff0c44),
-                  ),
-                ),
-              )),
+              visible: quizzes.isEmpty,
+              child: Text('')
+          ),
 
           SizedBox(
-              height: 16.0), // Espaçamento vertical entre o título e a lista
+              height: 16.0),
+               // Espaçamento vertical entre o título e a lista
           Visibility(
             visible: !showQuiz && !showQuiz2,
+            
             child: Expanded(
               flex: 0,
+              
               child: Wrap(
-                alignment:
-                    WrapAlignment.start, // Alinhamento central dos itens
-                spacing: 8.0, // Espaçamento horizontal entre os itens
+                alignment:WrapAlignment.start,
+                spacing: 0, // Espaçamento horizontal entre os itens
                 runSpacing:
                     0, // Espaçamento vertical entre as linhas de itens
                 children: quizzes.map((quiz) {
@@ -163,7 +158,7 @@ class _InicialPageState extends State<InicialPage> {
                           time: quiz['time']['hours'],
                           min: quiz['time']['min'],
                           height: 140,
-                          width: 140,
+                          width: 160,
                           unlimitedTime: quiz['unlimitedTime'],
                           questions: quiz['questionsAmount'],
                         ),
@@ -189,7 +184,7 @@ class _InicialPageState extends State<InicialPage> {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFff0c44),
+                        color: Color(0xFF149cb0),
                       ),
                     ),
                   ),
@@ -205,7 +200,7 @@ class _InicialPageState extends State<InicialPage> {
                           side:
                               BorderSide(color: Colors.white, width: 2.0),
                         ),
-                        color: Color(0xFFff0c44),
+                        color: Color(0xFF149cb0),
                         child: Padding(
                           padding: EdgeInsets.all(16.0),
                           child: Column(
@@ -270,7 +265,7 @@ class _InicialPageState extends State<InicialPage> {
                               showQuiz = false;
                               showQuiz2 = false;
                               isDisabled = false;
-                               Navigator.pushNamed(context, '/history');
+                               Navigator.pushNamed(context, '/home');
                             })
                           }
                       })
@@ -326,7 +321,7 @@ class CardItem extends StatelessWidget {
         width: width,
         
         decoration: BoxDecoration(
-          color: Color(0xFFff0c44),
+          color: Color(0xFF149cb0),
           
           borderRadius: BorderRadius.circular(10.0), // Borda arredondada
         ),
@@ -395,7 +390,7 @@ class _QuizQuestionState extends State<QuizQuestion> {
           backgroundColor: color == "success"
               ? Colors.green
               : color == "error"
-                  ? Color(0xFFff0c44)
+                  ? Color(0xFF149cb0)
                   : Colors.blue,
           behavior: SnackBarBehavior
               .floating, // Define o comportamento como flutuante
@@ -415,12 +410,12 @@ class _QuizQuestionState extends State<QuizQuestion> {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Color(0xFFff0c44),
+            color: Color(0xFF149cb0),
           ),
         ),  IconButton(
             icon: Icon(
               Icons.arrow_back, // Ícone de seta de retorno
-              color: Color(0xFFff0c44)
+              color: Color(0xFF149cb0)
             ),
             onPressed:() => {
               setState((){
@@ -452,7 +447,7 @@ class _QuizQuestionState extends State<QuizQuestion> {
                   quiz['questions'][selectedQuiz]['question'],
                   style: TextStyle(
                     fontSize: 16,
-                    color: Color(0xFFff0c44),
+                    color: Color(0xFF149cb0),
                   ),
                 ),
               ),
@@ -592,7 +587,7 @@ class _QuizQuestionState extends State<QuizQuestion> {
             }
           },
           style: ElevatedButton.styleFrom(
-            primary: Color(0xFFff0c44), // Cor de fundo vermelha
+            primary: Color(0xFF149cb0), // Cor de fundo vermelha
             onPrimary: Colors.white, // Cor do texto branco
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8.0), // Borda arredondada
@@ -644,13 +639,13 @@ class _RedCardState extends State<RedCard> {
             borderRadius: BorderRadius.circular(4.0),
             side: BorderSide(
               color: widget.isSelected ? 
-              (widget.isDisabled && widget.isDisabledCorrect)?Colors.green :Color(0xFFff0c44) :
+              (widget.isDisabled && widget.isDisabledCorrect)?Colors.green :Color(0xFF149cb0) :
                (widget.isDisabled && widget.isDisabledCorrect)?Colors.green: Colors.grey,
               width: 2.0,
             ),
           ),
           color: widget.isSelected ? 
-            (widget.isDisabled && widget.isDisabledCorrect)?Colors.green :Color(0xFFff0c44) :
+            (widget.isDisabled && widget.isDisabledCorrect)?Colors.green :Color(0xFF149cb0) :
                (widget.isDisabled && widget.isDisabledCorrect)?Colors.green: Colors.white,
           child: Padding(
             padding: EdgeInsets.all(12.0),
@@ -698,7 +693,7 @@ class RedCardWithInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-    color: Color(0xFFff0c44),
+    color: Color(0xFF149cb0),
     elevation: 4.0,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8.0),
@@ -765,7 +760,7 @@ class RedCardWithInfo extends StatelessWidget {
                   },
                   style: ElevatedButton.styleFrom(
                     primary: Colors.white,
-                    onPrimary: Color(0xFFff0c44),
+                    onPrimary: Color(0xFF149cb0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),

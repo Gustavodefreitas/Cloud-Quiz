@@ -43,7 +43,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   getSnackBar(text,color){
     return SnackBar(
       content: Text(text),
-      backgroundColor: color == "success"?Colors.green:color == "erro"?Color(0xFFff0c44):Colors.blue,
+      backgroundColor: color == "success"?Colors.green:color == "erro"?Color(0xFF149cb0):Colors.blue,
       behavior: SnackBarBehavior.floating, // Define o comportamento como flutuante
       margin: EdgeInsets.all(56.0)); // Define o espaço em relação à parte inferior
   }

@@ -69,7 +69,9 @@ class _DashboardState extends State<DashboardPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Dashboard'),
+        backgroundColor: Colors.white,
+        title: Text('Dashboard', style: TextStyle(color: Colors.black)),
+        centerTitle: true,
       ),
       body: Padding(
         padding: EdgeInsets.all(8.0),
@@ -78,7 +80,7 @@ class _DashboardState extends State<DashboardPage> {
           children: [
             Card(
               elevation: 1.0,
-              color: Colors.lightBlue,
+              color: const Color(0xFF82c1b8),
               child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
@@ -121,7 +123,7 @@ class _DashboardState extends State<DashboardPage> {
             SizedBox(height: 16.0),
             Card(
               elevation: 4.0,
-              color: Colors.orange,
+              color: Color(0xFF6ca4b4),
               child: Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Column(
@@ -139,14 +141,17 @@ class _DashboardState extends State<DashboardPage> {
                     SizedBox(height: 16.0),
                     QuizProgressSlider(
                       label: 'Quizzes Concluídos',
-                      completed: quizFeito, // Altere com dados reais
-                      total: totalQuiz, // Altere com dados reais
+                      completed: quizFeito,
+                      total: totalQuiz, 
+                      percentage: false,
                     ),
                      QuizProgressSlider(
-                      label: 'Quizzes Aprovados',
-                      completed: approve, // Altere com dados reais
-                      total: totalQuiz, // Altere com dados reais
-                    )
+                      label: 'Taxa de Aprovação',
+                      completed: approve > 0 && totalQuiz > 0?((approve/totalQuiz)*100).toInt():0,
+                      total: totalQuiz, 
+                      percentage:true
+                    ) 
+                    
                      
                   ],
                 ),
@@ -198,11 +203,13 @@ class QuizProgressSlider extends StatelessWidget {
   final String label;
   final int completed;
   final int total;
+  final bool percentage;
 
   QuizProgressSlider({
     required this.label,
     required this.completed,
     required this.total,
+    required this.percentage
   });
 
   @override
@@ -230,7 +237,7 @@ class QuizProgressSlider extends StatelessWidget {
         ),
         SizedBox(height: 8.0),
         Text(
-          '$completed de $total',
+          percentage?'$completed%':'$completed de $total',
           style: TextStyle(
             fontSize: 16.0,
             color: Colors.white,

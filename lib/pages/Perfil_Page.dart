@@ -39,7 +39,7 @@ class _PerfilPageState extends State<PerfilPage> {
         backgroundColor: color == "success"
             ? Colors.green
             : color == "erro"
-                ? Color(0xFFff0c44)
+                ? Color(0xFF149cb0)
                 : Colors.blue,
         behavior:
             SnackBarBehavior.floating, // Define o comportamento como flutuante
@@ -51,7 +51,9 @@ class _PerfilPageState extends State<PerfilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Editar Perfil'),
+        backgroundColor: Colors.white,
+        title: Text('Editar Perfil', style: TextStyle(color: Colors.black)),
+        centerTitle: true,
       ),
       body: Padding(
           padding: EdgeInsets.symmetric(vertical: 0),
@@ -66,7 +68,7 @@ class _PerfilPageState extends State<PerfilPage> {
                     child: Container(
                       height: 250,
                       width: 400,
-                      color: Color(0xFFff0c44),
+                      color: Color(0xFF149cb0),
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -158,7 +160,7 @@ class _PerfilPageState extends State<PerfilPage> {
                       controller: telefone,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFff0c44))),
+                            borderSide: BorderSide(color: Color(0xFF149cb0))),
                         labelText: 'Telefone',
                       ),
                       keyboardType: TextInputType.emailAddress,
@@ -178,12 +180,12 @@ class _PerfilPageState extends State<PerfilPage> {
                 margin: EdgeInsets.only(top: 40),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFff0c44),
+                      backgroundColor: Color(0xFF149cb0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                             8.0), // Configura os cantos como retos (borda retangular)
                       ),
-                      shadowColor: Color(0xFFff0c44)),
+                      shadowColor: Color(0xFF149cb0)),
                   onPressed: () => context.read<UserService>().editarUsuario(
                       "",
                       nome.text,

@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
  getSnackBar(text,color){
     return SnackBar(
       content: Text(text),
-      backgroundColor: color == "success"?Colors.green:color == "erro"?Color(0xFFff0c44):Colors.blue,
+      backgroundColor: color == "success"?Colors.green:color == "erro"?Color(0xFF149cb0):Colors.blue,
       behavior: SnackBarBehavior.floating, // Define o comportamento como flutuante
       margin: EdgeInsets.all(56.0)); // Define o espaço em relação à parte inferior
   }
@@ -67,12 +67,18 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 100),
+          padding: EdgeInsets.only(top: 10),
           child: Form(
             key: formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                 Image.asset(
+                  'logo-quizz.png',
+                  height: 200 ,// Altura desejada da imagem
+                  width: 200, // Largura desejada da imagem
+                  fit: BoxFit.contain, // Ajusta a imagem para preencher o espaço
+                ),
                 Text(
                   titulo,
                   style: TextStyle(

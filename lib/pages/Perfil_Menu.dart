@@ -37,7 +37,9 @@ class _PerfilMenuPageState extends State<PerfilMenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Perfil'),
+          backgroundColor: Colors.white,
+          title: Text('Perfil', style: TextStyle(color: Colors.black)),
+          centerTitle: true,
           automaticallyImplyLeading: false,
 
         ),
@@ -47,7 +49,7 @@ class _PerfilMenuPageState extends State<PerfilMenuPage> {
                 FractionallySizedBox(
                 widthFactor: 1.0,
                 child: Container(
-                  color: Color(0xFFff0c44),
+                  color: Color(0xFF149cb0),
                   height: 80,
                   padding: EdgeInsets.only(left: 16,right: 16),
                   child: 
