@@ -41,6 +41,13 @@ class _HistoryPageState extends State<HistoryPage> {
          // Cor de fundo personalizada
         title: Text('Histórico dos quizzes', style: TextStyle(color: Colors.black)),
         centerTitle: true,
+        leading: IconButton(
+        icon: Icon(Icons.arrow_back), 
+        color:Colors.white,
+        onPressed: () {
+        },
+        ),
+
       ),
       body: Container(
         margin: EdgeInsets.all(2),
