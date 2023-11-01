@@ -34,6 +34,21 @@ class MyApp extends StatelessWidget{
       },
       theme: ThemeData(
         
+        primarySwatch: MaterialColor(
+    0xFF149cb0, // Substitua pelo seu valor hexadecimal
+    <int, Color>{
+      50: Color(0xFFE0F2F2), // Defina as cores para as várias tonalidades, se necessário
+      100: Color(0xFFB3E6E6),
+      200: Color(0xFF80D9D9),
+      300: Color(0xFF4DCBCC),
+      400: Color(0xFF26BFBF),
+      500: Color(0xFF149cb0), // Cor principal
+      600: Color(0xFF129293),
+      700: Color(0xFF107576),
+      800: Color(0xFF0E5A59),
+      900: Color(0xFF0A4642),
+    },
+  ),
       ),
       home:AuthCheck(),  //  home:LoginScreen(),
     );
