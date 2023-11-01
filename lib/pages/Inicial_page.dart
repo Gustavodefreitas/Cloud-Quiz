@@ -88,13 +88,16 @@ class _InicialPageState extends State<InicialPage> {
           ),
 
           SizedBox(
+            
               height: 16.0),
                // Espaçamento vertical entre o título e a lista
-          Visibility(
+          Container(
+  margin: EdgeInsets.only(left: 18),
+  child:Visibility(
+            
             visible: !showQuiz && !showQuiz2,
             
-            child: Expanded(
-              flex: 0,
+      
               
               child: Wrap(
                 alignment:WrapAlignment.start,
@@ -169,8 +172,8 @@ class _InicialPageState extends State<InicialPage> {
                   
                 }).toList(),
               ),
-            ),
-          ),
+            
+          ),),
 
           Visibility(
               visible: showQuiz && !showQuiz2,
