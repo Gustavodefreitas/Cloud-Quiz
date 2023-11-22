@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                  Image.asset(
-                  'logo-quizz.png',
+                  'assets/images/logo-quizz.png',
                   height: 200 ,// Altura desejada da imagem
                   width: 200, // Largura desejada da imagem
                   fit: BoxFit.contain, // Ajusta a imagem para preencher o espaço

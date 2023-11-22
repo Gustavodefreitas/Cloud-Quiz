@@ -20,9 +20,10 @@ import 'mainapp.dart';
 
 void main() async {
    // Inicialize o Firebase para "Projeto B"
+  WidgetsFlutterBinding.ensureInitialized(); 
 
   FirebaseConfigB.initialize();
-  WidgetsFlutterBinding.ensureInitialized(); 
+  print(FirebaseConfigB);
   await Firebase.initializeApp(
   options: DefaultFirebaseOptions.currentPlatform,
 );
