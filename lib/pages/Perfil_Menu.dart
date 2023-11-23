@@ -66,7 +66,7 @@ class _PerfilMenuPageState extends State<PerfilMenuPage> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage(
-                                    'assets/images/user-icon.png'), // Substitua pelo caminho da sua imagem
+                                    'asssets/images/user-icon.png'), // Substitua pelo caminho da sua imagem
                                 fit: BoxFit.cover,
                               ),
                             ),

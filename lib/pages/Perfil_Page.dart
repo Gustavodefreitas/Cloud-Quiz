@@ -97,7 +97,7 @@ class _PerfilPageState extends State<PerfilPage> {
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/camera.png'), // Substitua pelo caminho da sua imagem
+                                          'asssets/images/camera.png'), // Substitua pelo caminho da sua imagem
                                       fit: BoxFit.cover,
                                     ),
                                   ),

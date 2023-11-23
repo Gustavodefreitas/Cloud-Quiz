@@ -334,7 +334,7 @@ class CardItem extends StatelessWidget {
           children: [
             // Adicione sua imagem aqui com o tamanho desejado
             Image.asset(
-              'assets/images/quizz.png',
+              'asssets/images/quizz.png',
               height: height / 2, // Altura desejada da imagem
               width: width / 2, // Largura desejada da imagem
               fit: BoxFit.contain, // Ajusta a imagem para preencher o espaço
